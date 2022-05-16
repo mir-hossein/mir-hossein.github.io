@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+    <title>Mirhossein Rahmani 's personal blog ... وبلاگ شخصی میرحسین رحمانی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="Mirhossein Rahmani 's personal blog ... وبلاگ شخصی میرحسین رحمانی"/>
+    <meta name="keywords" content="Mirhossein Rahmani, میرحسین رحمانی, Programming, برنامه‌نویسی" />
+    <meta name="og:title" content="About me" />
+    <meta name="og:description" content="This page contains some information about me ..." />
+    <meta name="og:image" content="" />
+    <meta name="og:url" content="https://mir-hossein.github.io/about.html" />
+    <meta name="twitter:title" content="About me" />
+    <meta name="twitter:description" content="This page contains some information about me ..." />
+    <meta name="twitter:image" content="" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD2HWBMC0S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RD2HWBMC0S');
+    </script>
+</head>
+<body onload="setMode(1);">
+    <div class="top-header">
+        <h1>In the Name of GOD, the Most Gracious, the Most Merciful</h1>
+    </div>
+    
+    <div class="navigation-div">
+        <ul class="navigation-bar">
+            <li class="navigation-bar-items">
+                <a href="index.html" title="Home">
+                    Home <img src="icons/icons8-home-48.png"/>
+                </a>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a onclick="changeMode();" title="Select the Theme mode ...">
+                    <img src="icons/icons8-brightness-48.png"/> (<span id="mode_counter" class="color-red"></span>/2)
+                </a>
+            </li>
+            
+            <li class="navigation-bar-items no-hover">
+                Search:
+                <input id="searchbox" type="text" placeholder="Ex: Eng" size=8
+                    onfocus="extendSearchbox()"
+                    onfocusout="defaultSearchbox()"
+                    oninput="searchIt()"/>
+                <img src="icons/icons8-google-48.png" onclick="googleSearch()" alt="Google"/>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a href="about.html" title="About me">About me <img src="icons/icons8-person-48.png"/></a>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a href="rss.xml" title="RSS">RSS <img src="icons/icons8-rss-48.png"/></a>
+            </li>
+        </ul>
+    </div>
+    
+    <br>
+    
+    <div class="left">&nbsp;</div>
+    
+    <div class="post">
+        <span class="center">   
+            <h2>About me:</h2>
+        </span>
+        
+        <br>
+        
+        <span class="center"> 
+            <img class="about-me-avatar" src="icons/icons8-user-80.png"> 
+        </span>
+        
+        <br>
+        <br>
+        
+        <div class="about-me-border-left">
+            Hi! My name is Mirhossein Rahmani, I'm a programmer.<br>
+            I'll write about programming, security and mathematics.
+        </div>
+        
+        <br>
+        
+        <div class="about-me-border-right fa">
+            سلام! من میرحسین رحمانی هستم، یه برنامه‌نویس‌ام.<br>
+            اینجا در مورد برنامه‌نویسی، امنیت، ریاضیات و منطق می‌نویسم.
+        </div>
+        
+        <br>
+        
+        <div class="about-me-contact">
+            <div class="center">
+                <a href="https://twitter.com/mirhossein_" title="Twitter">
+                    <img src="icons/icons8-twitter-48.png"/>
+                </a>
+                
+                <a href="https://github.com/mir-hossein" title="Github">
+                    <img src="icons/icons8-github-48.png"/>
+                </a>
+                
+                <a href="javascript:showEmail();" title="E-mail- Click to see">
+                    <img src="icons/icons8-gmail-48.png"/>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/Mirhossein-Rahmani/" title="Linkedin">
+                    <img src="icons/icons8-linkedin-48.png"/>
+                </a>
+                
+                <br>
+                
+                <input type="text" id="E-mail-Address" size="30" class="hidden" value="" />                    
+            </div>
+        </div>
+    </div>
+    
+    <div class="right">&nbsp;</div>
+    
+    <footer>
+        Thank you for your attention.
+        <br>
+        
+        <div class="left">&nbsp;</div>
+        
+        <div class="footer-center">
+            <a href="https://mir-hossein.github.io/index.html" title="Home">
+                <img src="icons/icons8-home-48.png"/>
+            </a>
+            <a href="https://twitter.com/mirhossein_" title="Twitter">
+                <img src="icons/icons8-twitter-48.png"/>
+            </a>
+            <a href="https://github.com/mir-hossein" title="Github">
+                <img src="icons/icons8-github-48.png"/>
+            </a>
+            <a href="https://mir-hossein.github.io/about.html" title="About me">
+                <img src="icons/icons8-person-48.png"/>
+            </a>
+            <a href="https://www.linkedin.com/in/Mirhossein-Rahmani/" title="Linkedin">
+                <img src="icons/icons8-linkedin-48.png"/>
+            </a>
+            <a href="#" title="Up">
+                <img src="icons/icons8-upward-arrow-48.png"/>
+            </a>
+        </div>
+        
+        <div class="right">&nbsp;</div>
+        
+        &nbsp;Powered by <img src="icons/icons8-heart-suit-48.png" class="powered-by"><br>
+        &nbsp;Icons from <a href="https://icons8.com">icons8.com</a>
+    </footer>
+    
+</body>
+</html>

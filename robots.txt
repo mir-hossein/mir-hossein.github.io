@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mir-hossein.github.io/sitemap.xml
+

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+    <title>Mirhossein Rahmani 's personal blog ... وبلاگ شخصی میرحسین رحمانی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="Mirhossein Rahmani 's personal blog ... وبلاگ شخصی میرحسین رحمانی"/>
+    <meta name="keywords" content="Mirhossein Rahmani, میرحسین رحمانی, Programming, برنامه‌نویسی" />
+    <meta name="og:title" content="Welcome!" />
+    <meta name="og:description" content="Mirhossein's personal blog ..." />
+    <meta name="og:image" content="" />
+    <meta name="og:url" content="https://mir-hossein.github.io/index.html" />
+    <meta name="twitter:title" content="Welcome" />
+    <meta name="twitter:description" content="Mirhossein's personal blog ..." />
+    <meta name="twitter:image" content="" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD2HWBMC0S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RD2HWBMC0S');
+    </script>
+</head>
+<body onload="setMode(2);">
+    <div class="top-header">
+        <h1>In the Name of GOD, the Most Gracious, the Most Merciful</h1>
+    </div>
+    
+    <div class="navigation-div">
+        <ul class="navigation-bar">
+            <li class="navigation-bar-items">
+                <a href="index.html" title="Home">
+                    Home <img src="icons/icons8-home-48.png"/>
+                </a>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a onclick="changeMode();" title="Select the Theme mode ...">
+                    <img src="icons/icons8-brightness-48.png"/> (<span id="mode_counter" class="color-red"></span>/2)
+                </a>
+            </li>
+            
+            <li class="navigation-bar-items no-hover">
+                Search:
+                <input id="searchbox" type="text" placeholder="Ex: Eng" size=8
+                    onfocus="extendSearchbox()"
+                    onfocusout="defaultSearchbox()"
+                    oninput="searchIt()"/>
+                <img src="icons/icons8-google-48.png" onclick="googleSearch()" alt="Google"/>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a href="about.html" title="About me">About me <img src="icons/icons8-person-48.png"/></a>
+            </li>
+            
+            <li class="navigation-bar-items">
+                <a href="rss.xml" title="RSS">RSS <img src="icons/icons8-rss-48.png"/></a>
+            </li>
+        </ul>
+    </div>
+    
+    <br>
+    
+    <div class="left">&nbsp;</div>
+    
+    <div class="post">
+        <span class="center">
+            <h2>Home/Posts:</h2>
+        </span>
+        
+        <h3>
+            <span class="left-side-contents-title">&nbsp;English:</span>
+        </h3>
+        <h3>
+            <span class="fa right-side-contents-title">&nbsp;فارسی:</span>
+        </h3>
+        
+        <br>
+    
+        <div class="separator-solid"></div> <!-- -- -- "Post Separator" -- -- -->
+        
+        <div class="en-posts">
+            <div class="post-title">
+                <a href="javascript:void(0);">
+                    <b><img src="icons/icons8-invisible-30.png" class="status-img"/>
+                    Draft: How I helped Iran's national CERT to improve their security ... - Part I
+                    </b>
+                </a>
+            </div>
+
+            <div class="post-details">
+                <span class="post-date">16 May 2022</span>
+                <span class="post-cat">Security</span>
+                <span class="post-status-unpublished">⌛&nbsp;</span>
+            </div>
+            
+            <div class="post-summary">   
+                <span>
+                The story of finding/exploiting ten 0-day vulnerabilities and their impact ...
+                <br>
+                I will provide some information about "apanet" and ...
+                <br>
+                All vulnerabilities have been fixed by the vendor and there is no danger to users.
+                </span>
+            </div>
+                   
+            <div id="post-tags">
+                <span class="tags">Security</span>
+                <span class="tags">cert.ir</span>
+                <span class="tags">apanet.cert.ir</span>
+                <span class="tags">English</span>
+                <span class="tags">CVD</span>
+                <span class="tags">apatehran.cert.ir</span>
+                <span class="tags hidden">CVE-2021-36593</span>
+                <span class="tags hidden">CVE-2021-36594</span>
+                <span class="tags hidden">CVE-2021-36596</span>
+                <span class="tags hidden">CVE-2021-36597</span>
+                <span class="tags hidden">CVE-2021-36598</span>
+                <span class="tags hidden">CVE-2021-36599</span>
+                <span class="tags hidden">CVE-2022-25128</span>
+                <span class="tags hidden">CVE-2022-25129</span>
+                <span class="tags hidden">Motoshub</span>
+                <span class="tags hidden">OxWall</span>
+                <span class="tags hidden">iran_national_cert</span>
+                <span class="tags hidden">iranian_national_cert</span>
+                <span class="tags hidden">Whitehat</span>
+                <span class="tags hidden">Kolahsefid</span>
+                <span class="tags hidden">cert.ir</span>
+                <span class="tags hidden">RCE</span>
+                <span class="tags hidden">apatehran.cert.ir</span>
+                <span class="tags hidden">mail.cert.ir</span>
+                <span class="tags hidden">kolahsefid.cert.ir</span>
+                <span class="tags hidden">kolahsefid.org</span>
+                <span class="tags hidden">hossein_</span>
+                <span class="tags hidden">0-day</span>
+                <span class="tags hidden">0day</span>
+                <span class="tags hidden">mhr</span>
+            </div>
+        </div>
+        
+        <div class="separator-solid"></div> <!-- -- -- "Post Separator" -- -- -->
+
+        <div class="fa-posts fa">
+            <div class="post-title">
+                <a href="javascript:void(0);">
+                    <b><img src="icons/icons8-invisible-30.png" class="status-img"/>
+                پیش‌نویس: داستان کشف ۱۰ آسیب‌پذیری 
+                    <span class="en-in-fa">0day</span>     
+                 و حواشی ... - قسمت اول
+                    </b>
+                </a>
+            </div>
+
+            <div class="post-details">
+                <span class="post-date">۲۶ اردیبهشت ۱۴۰۱</span>
+                <span class="post-cat">امنیت</span>
+                <span class="post-status-unpublished-fa">⌛&nbsp;</span>
+            </div>
+            
+            <div class="post-summary">   
+                <span>
+                در این مقاله به تشریح مطالعه‌ای پرداخته خواهد شد که مدتی قبل در مورد «مرکز ماهر» انجام شده است.
+                <br>
+                به توضیح ۱۰ آسیب‌پذیری‌ <span class="en-in-fa">0day</span> پرداخته خواهد شد و در نهایت توضیحاتی در مورد «آپانت»، «سامانه تعاملی مقابله با رخدادهای امنیتی» و «سامانه جامع تعاملی» ارائه می‌شود.
+
+                <br>
+                لازم به ذکر است که آسیب‌پذیری‌های اشاره شده در این مقاله، قبلا توسط مرکز ماهر رفع شدند و این مقاله هیچ خطری را متوجه مرکز ماهر نخواهد کرد.
+                </span>
+            </div>
+                   
+            <div id="post-tags">
+                <span class="tags">امنیت</span>
+                <span class="tags">مرکزماهر</span>
+                <span class="tags">آپانت</span>
+                <span class="tags">فارسی</span>
+                <span class="tags">CVD</span>
+                <span class="tags">مطالعات_مستقل</span>
+                <span class="tags hidden">CVE-2021-36593</span>
+                <span class="tags hidden">CVE-2021-36594</span>
+                <span class="tags hidden">CVE-2021-36596</span>
+                <span class="tags hidden">CVE-2021-36597</span>
+                <span class="tags hidden">CVE-2021-36598</span>
+                <span class="tags hidden">CVE-2021-36599</span>
+                <span class="tags hidden">CVE-2022-25128</span>
+                <span class="tags hidden">CVE-2022-25129</span>
+                <span class="tags hidden">موتوشاب</span>
+                <span class="tags hidden">OxWall</span>
+                <span class="tags hidden">مرکز_ماهر</span>
+                <span class="tags hidden">کلاه‌سفید</span>
+                <span class="tags hidden">کلاه‌_سفید</span>
+                <span class="tags hidden">cert.ir</span>
+                <span class="tags hidden">RCE</span>
+                <span class="tags hidden">apanet.cert.ir</span>
+                <span class="tags hidden">apatehran.cert.ir</span>
+                <span class="tags hidden">mail.cert.ir</span>
+                <span class="tags hidden">kolahsefid.cert.ir</span>
+                <span class="tags hidden">kolahsefid.org</span>
+                <span class="tags hidden">hossein_</span>
+                <span class="tags hidden">0-day</span>
+                <span class="tags hidden">0day</span>
+                <span class="tags hidden">mhr</span>
+            </div>
+        </div>
+
+        <div class="separator-solid"></div> <!-- -- -- "Post Separator" -- -- -->
+
+        <div class="en-posts">
+            <div class="post-title">
+                <a href="javascript:void(0);">
+                    <b><img src="icons/icons8-invisible-30.png" class="status-img"/>
+                    Draft: █ █████ ██ ███ ███ 
+                    </b>
+                </a>
+            </div>
+
+            <div class="post-details">
+                <span class="post-date">██ ███ ████</span>
+                <span class="post-cat">████████</span>
+                <span class="post-status-postponed">🔴&nbsp;</span>
+            </div>
+            
+            <div class="post-summary">   
+                <span>
+                ...
+                </span>
+            </div>
+                   
+            <div id="post-tags">
+                <span class="tags">████████</span>
+                <span class="tags">███████</span>
+                <span class="tags">███</span>
+                <span class="tags">█████</span>
+                <span class="tags hidden">████████</span>
+            </div>
+        </div>
+               
+        <div class="separator-solid"></div> <!-- -- -- "Post Separator" -- -- -->
+
+        <div class="en-posts">
+            <div class="post-title">
+                <a href="javascript:void(0);">
+                    <b><img src="icons/icons8-invisible-30.png" class="status-img"/>
+                    Draft: ██████ █████ ████ ██ ███ ███████ ███ █████████████
+                    </b>
+                </a>
+            </div>
+
+            <div class="post-details">
+                <span class="post-date">██ ███ ████</span>
+                <span class="post-cat">████████</span>
+                <span class="post-status-postponed">🔴&nbsp;</span>
+            </div>
+            
+            <div class="post-summary">   
+                <span>
+                █ ███ █████ ████ █ ██████████ ██ ████ ████ ██ ███ ██ ██████ ████ ███████ ███ ████████████.
+                <br>
+                █ ████ ███ █████ ██ █ ███ ██████ ███████.
+                </span>
+            </div>
+                   
+            <div id="post-tags">
+                <span class="tags">████████</span>
+                <span class="tags">███████</span>
+                <span class="tags">████████</span>
+                <span class="tags">█████</span>
+                <span class="tags">████</span>
+                <span class="tags">███</span>
+                <span class="tags hidden">██████</span>
+                <span class="tags hidden">█████</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="right">&nbsp;</div>
+    
+    <footer>
+        Thank you for your attention.
+        <br>
+        
+        <div class="left">&nbsp;</div>
+        
+        <div class="footer-center">
+            <a href="https://mir-hossein.github.io/index.html" title="Home">
+                <img src="icons/icons8-home-48.png"/>
+            </a>
+            <a href="https://twitter.com/mirhossein_" title="Twitter">
+                <img src="icons/icons8-twitter-48.png"/>
+            </a>
+            <a href="https://github.com/mir-hossein" title="Github">
+                <img src="icons/icons8-github-48.png"/>
+            </a>
+            <a href="https://mir-hossein.github.io/about.html" title="About me">
+                <img src="icons/icons8-person-48.png"/>
+            </a>
+            <a href="https://www.linkedin.com/in/Mirhossein-Rahmani/" title="Linkedin">
+                <img src="icons/icons8-linkedin-48.png"/>
+            </a>
+            <a href="#" title="Up">
+                <img src="icons/icons8-upward-arrow-48.png"/>
+            </a>
+        </div>
+        
+        <div class="right">&nbsp;</div>
+        
+        &nbsp;Powered by <img src="icons/icons8-heart-suit-48.png" class="powered-by"><br>
+        &nbsp;Icons from <a href="https://icons8.com">icons8.com</a>
+    </footer>
+    
+</body>
+</html>

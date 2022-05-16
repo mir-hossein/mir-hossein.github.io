@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+    <title>Mirhossein Rahmani's personal blog وبلاگ شخصی میرحسین رحمانی</title>
+    <link>https://mir-hossein.github.io</link>
+    <description>Mirhossein Rahmani's personal blog وبلاگ شخصی میرحسین رحمانی</description>
+    <category>Security/Programming/General/عمومی/امنیت/برنامه‌نویسی</category>
+    <item>
+        <title>Index - صفحه اصلی</title>
+        <link>https://mir-hossein.github.io/index.html</link>
+        <description>All posts ... همه مطالب</description>
+        <category>General</category>
+    </item>
+    <item>
+        <title>About me ... درباره‌ی من</title>
+        <link>https://mir-hossein.github.io/about.html</link>
+        <description>About me ... درباره من</description>
+        <category>General</category>
+    </item>
+</channel>
+
+</rss>
