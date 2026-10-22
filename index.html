@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="title" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  <meta name="description" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  <meta name="keywords" content="Mirhossein Rahmani, میرحسین رحمانی, Programming, برنامه‌نویسی" />
+  
+  <link rel="canonical" href="https://mir-hossein.github.io/" />
+
+  <meta property="og:type" content="article" />  
+  <meta property="og:url" content="https://mir-hossein.github.io/" />
+  <meta property="og:title" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  <meta property="og:description" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mir-hossein.github.io/" />
+  <meta name="twitter:title" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  <meta name="twitter:description" content="Mirhossein Rahmani &#39;s Personal Blog ... وبلاگ شخصی میرحسین رحمانی" />
+  
+  
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/styles.css">
+  
+  <script src="https://mir-hossein.github.io/js/bootstrap.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/jquery-4.0.0.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/script.js"></script>
+</head>
+
+<body>  
+  <header class="text-center"><h1 class="mx-auto text-white w-100 py-5 fw-bold">In the Name of GOD, the Most Gracious, the Most Merciful</h1></header>
+  
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav px-5">
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/" title="Home">Home <img src="https://mir-hossein.github.io/icons/home.png" alt="Home!"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/research/" title="Research">Research <img src="https://mir-hossein.github.io/icons/notes.png" alt="Research"/></a>
+      </li>
+      
+      <li class="nav-item" id="li-searchbox">
+        <a href="#" title="Search">Search <img src="https://mir-hossein.github.io/icons/search.png" alt="Search"/></a>
+      </li>
+      
+      <li class="nav-item no-hover" id="li-searchbox-extended">
+        <div class="container-fluid input-group">
+          <input type="text" class="form-control" id="searchbox"  aria-describedby="searchbox2" placeholder="Search by hashtag or Google!" oninput="searchIt();">
+          
+          <span class="input-group-text">
+            <img src="https://mir-hossein.github.io/icons/search.png" alt="Search" id="by-google" class="search-by" onclick="googleSearch();" />
+          </span>
+        </div>
+      </li>
+        
+      <li class="nav-item no-hover ms-lg-auto rounded rounded-3" onchange="setMode();">
+        <div class="btn-group bg-gradient" role="group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-dark" autocomplete="off" checked />
+          <label class="btn btn-outline-primary" for="btnradio-dark"><img src="https://mir-hossein.github.io/icons/moon.svg" alt="Moon" class="theme-mode-image" /></label>  
+          
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-light" autocomplete="off"  />
+          <label class="btn btn-outline-primary" for="btnradio-light"><img src="https://mir-hossein.github.io/icons/sun.svg" alt="Sun" class="theme-mode-image" /></label>
+        </div>
+      </li>
+            
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/index.xml" title="RSS">RSS <img src="https://mir-hossein.github.io/icons/rss.png" alt="RSS"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/about/" title="About me">About me <img src="https://mir-hossein.github.io/icons/person.png" alt="Person"/></a>
+      </li>
+    </ul>
+  </nav>
+  
+  <br/>
+  
+  <aside class="left-side-content">&nbsp;</aside>
+  
+  <main class="container-fluid main-content dark-mode" >
+
+    <div class="container-fluid btn-group p-0" role="group">
+      <a class="btn btn-lg fa bg-gradient btn-primary text-primary-emphasis" onclick="setTag('English'); searchByTag();">Show only English posts</a>
+      <a class="btn btn-lg fa bg-gradient btn-warning text-warning-emphasis" onclick="setTag(''); searchByTag();">کل پست‌ها/All posts</a>
+      <a class="btn btn-lg fa bg-gradient btn-danger text-danger-emphasis" onclick="setTag('فارسی'); searchByTag();">فقط نمایش پست‌های فارسی</a>
+    </div>
+    
+    <div class="container-fluid">
+      &nbsp;
+    </div>
+    
+    <div id="selected-language" class="container-fluid border-top bg-transparent border-5 border-warning">
+      &nbsp;
+    </div>
+    
+    <div class="container-fluid bg-gradient text-center rounded-2 bg-success text-success-emphasis" id="published-posts">
+      <div class="col fa h3">منتشرشده/Published
+      </div>
+    </div>
+      
+    <article class="card en-posts bg-opacity-10 border-opacity-50 bg-success border-success">
+      <header class="card-header border-0 bg-transparent p-0">
+        <div class="card-title post-title">
+          <h4>
+            <img src="https://mir-hossein.github.io/icons/published.png" class="status-img" alt="Status"/>
+            <a href="https://mir-hossein.github.io/posts/en/php-termination-process-trick/">
+              Using PHP termination process to bypass __wakeup
+            </a>
+          </h4>
+        </div>
+        
+        <div class="post-details align-text-bottom">
+          <img src="https://mir-hossein.github.io/icons/calendar.png" class="small-icons">
+          <time datetime="22 Oct 2026" class="post-date">22 Oct 2026</time>
+          <img src="https://mir-hossein.github.io/icons/folder.png" class="small-icons">
+          <span class="post-cat align-middle pt-1">Security</span>
+          <img src="https://mir-hossein.github.io/icons/clock.png" class="small-icons">
+          <span class="post-readingtime align-middle pt-1"> 7   minutes </span>
+          <span class="post-status-published">🟢&nbsp;</span>
+        </div>
+      </header>
+      
+      <div class="card-body post-summary border-success">A (new?) method to bypass __wakeup by exploiting PHP termination process.</div>
+           
+      <footer class="card-footer border-0 bg-transparent p-0">
+        <span class="tags">Guzzle</span>
+        <span class="tags">POP Chain</span>
+        <span class="tags">Gadget Chain</span>
+        <span class="tags">PHP-TPTW</span>
+        <span class="tags">PHP-IAA</span>
+        <span class="tags">RCE</span>
+        <span class="tags d-none">GC</span>
+        <span class="tags d-none">PHPGGC</span>
+        <span class="tags d-none">English</span>
+      </footer>
+    </article>
+
+    <article class="card en-posts bg-opacity-10 border-opacity-50 bg-success border-success">
+      <header class="card-header border-0 bg-transparent p-0">
+        <div class="card-title post-title">
+          <h4>
+            <img src="https://mir-hossein.github.io/icons/published.png" class="status-img" alt="Status"/>
+            <a href="https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/">
+              Re-introducing several PHP tricks and a new gadget chain for Guzzle ...
+            </a>
+          </h4>
+        </div>
+        
+        <div class="post-details align-text-bottom">
+          <img src="https://mir-hossein.github.io/icons/calendar.png" class="small-icons">
+          <time datetime="22 Oct 2026" class="post-date">22 Oct 2026</time>
+          <img src="https://mir-hossein.github.io/icons/folder.png" class="small-icons">
+          <span class="post-cat align-middle pt-1">Security</span>
+          <img src="https://mir-hossein.github.io/icons/clock.png" class="small-icons">
+          <span class="post-readingtime align-middle pt-1"> 11   minutes </span>
+          <span class="post-status-published">🟢&nbsp;</span>
+        </div>
+      </header>
+      
+      <div class="card-body post-summary border-success">I will (re?)-introduce a few useful PHP tricks and also a new RCE POP chain for Guzzle!</div>
+           
+      <footer class="card-footer border-0 bg-transparent p-0">
+        <span class="tags">Guzzle</span>
+        <span class="tags">POP Chain</span>
+        <span class="tags">Gadget Chain</span>
+        <span class="tags">PHP-IAA</span>
+        <span class="tags">PHP-ISCE</span>
+        <span class="tags">PHP-IAA-RDV</span>
+        <span class="tags">Publication of old research</span>
+        <span class="tags">RCE</span>
+        <span class="tags d-none">GC</span>
+        <span class="tags d-none">PHPGGC</span>
+        <span class="tags d-none">English</span>
+      </footer>
+    </article>
+
+    
+    
+    <div class="container-fluid bg-gradient text-center rounded-2 bg-danger text-danger-emphasis" id="draft-posts">
+      <div class="col fa h3">
+        پیش‌نویس‌ها/Drafts
+      </div>
+    </div>
+    
+    <article class="card en-posts bg-opacity-10 border-opacity-50 bg-danger border-danger">
+      <header class="card-header border-0 bg-transparent p-0">
+        <div class="card-title post-title">
+          <h4>
+            <img src="https://mir-hossein.github.io/icons/draft.png" class="status-img" alt="Status"/>
+            <a href="#">
+              How I helped Iran National CERT and their reaction ... Part-I
+            </a>
+          </h4>
+        </div>
+        
+        <div class="post-details align-text-bottom">
+          <img src="https://mir-hossein.github.io/icons/calendar.png" class="small-icons">
+          <time datetime="28 Aug 2022" class="post-date">28 Aug 2022</time>
+          <img src="https://mir-hossein.github.io/icons/folder.png" class="small-icons">
+          <span class="post-cat align-middle pt-1">Security</span>
+          <img src="https://mir-hossein.github.io/icons/clock.png" class="small-icons">
+          <span class="post-readingtime align-middle pt-1"> 61   minutes </span>
+          <span class="post-status-unpublished">🔴&nbsp;</span>
+        </div>
+      </header>
+      
+      <div class="card-body post-summary border-danger"><span class="text-decoration-line-through">In this article, a study conducted on the &ldquo;Iranian National CERT&rdquo; aka &ldquo;MAHER&rdquo; will be described. It will discuss several 0-day vulnerabilities, and finally, explanations will be provided regarding &ldquo;APANET&rdquo;, the &ldquo;Interactive System for Responding to Security Incidents&rdquo;, and the &ldquo;Comprehensive Interactive System&rdquo;. It is important to note that the vulnerabilities mentioned in this article have already been addressed by the Iranian National CERT, and this article will pose no risk to the Iranian National CERT.</span></div>
+           
+      <footer class="card-footer border-0 bg-transparent p-0">
+        <span class="tags">████████</span>
+        <span class="tags">████ ████████ ████</span>
+        <span class="tags">█████</span>
+        <span class="tags">████████████ █████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">█████████████████</span>
+        <span class="tags d-none">████████████</span>
+        <span class="tags d-none">██████████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">█████</span>
+        <span class="tags d-none">████</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">█████ ███</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">███████</span>
+        <span class="tags d-none">██████</span>
+        <span class="tags d-none">███</span>
+        <span class="tags d-none">███████</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">█████████</span>
+        <span class="tags d-none">English</span>
+      </footer>
+    </article>
+
+    <article class="card fa bg-opacity-10 border-opacity-50 bg-danger border-danger">
+      <header class="card-header border-0 bg-transparent p-0">
+        <div class="card-title post-title">
+          <h4>
+            <img src="https://mir-hossein.github.io/icons/draft.png" class="status-img" alt="Status"/>
+            <a href="#">
+              داستان کشف چند آسیب‌پذیری 0day و حواشی ... - قسمت اوّل 
+            </a>
+          </h4>
+        </div>
+        
+        <div class="post-details align-text-bottom">
+          <img src="https://mir-hossein.github.io/icons/calendar.png" class="small-icons">
+          <time datetime="28 Aug 2022" class="post-date">۶ شهریور ۱۴۰۱</time>
+          <img src="https://mir-hossein.github.io/icons/folder.png" class="small-icons">
+          <span class="post-cat align-middle pt-1">امنیت</span>
+          <img src="https://mir-hossein.github.io/icons/clock.png" class="small-icons">
+          <span class="post-readingtime align-middle pt-1"> ۱۱۶   دقیقه </span>
+          <span class="post-status-unpublished-fa">🔴&nbsp;</span>
+        </div>
+      </header>
+      
+      <div class="card-body post-summary border-danger"><span class="text-decoration-line-through">در این مقاله به تشریح مطالعه‌ای پرداخته خواهد شد که مدتی قبل در مورد «مرکز ماهر» انجام شده است. به توضیح چند آسیب‌پذیری‌ 0day پرداخته خواهد شد و در نهایت توضیحاتی در مورد «آپانت»، «سامانهٔ تعاملی مقابله با رخدادهای امنیتی» و «سامانهٔ جامع تعاملی» ارائه می‌شود.<br/>لازم است ذکر گردد که آسیب‌پذیری‌های اشاره شده در این مقاله، قبلاً توسط مرکز ماهر رفع شدند و این مقاله هیچ خطری را متوجه مرکز ماهر نخواهد کرد.</span></div>
+           
+      <footer class="card-footer border-0 bg-transparent p-0">
+        <span class="tags">████████</span>
+        <span class="tags">█████████</span>
+        <span class="tags">█████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">█████████████████</span>
+        <span class="tags d-none">████████████</span>
+        <span class="tags d-none">██████████████████</span>
+        <span class="tags d-none">██████████████</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">█████</span>
+        <span class="tags d-none">████</span>
+        <span class="tags d-none">█████████</span>
+        <span class="tags d-none">██████████</span>
+        <span class="tags d-none">█████</span>
+        <span class="tags d-none">███████</span>
+        <span class="tags d-none">██████</span>
+        <span class="tags d-none">███</span>
+        <span class="tags d-none">███████</span>
+        <span class="tags d-none">████████</span>
+        <span class="tags d-none">█████████</span>
+        <span class="tags d-none">فارسی</span>
+      </footer>
+    </article>
+
+    <div class="container-fluid bg-gradient text-center rounded-2 d-none bg-warning text-warning-emphasis" id="end-of-posts">
+      <div class="col fa h3">
+        پیدا نشد/Not Found 
+      </div>
+    </div>  
+  </main>
+  
+  <aside class="right-side-content">&nbsp;</aside>
+  
+  <div class="modal fade" id="full-size-modal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen bg-dark bg-opacity-50">
+      <div class="modal-content bg-dark bg-opacity-75 overflow-auto">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white">&nbsp;</h5>
+        </div>
+        
+        <div class="modal-body mx-auto">
+          <img id="full-size-img"  src="https://mir-hossein.github.io/icons/home.png" />
+        </div>
+        
+        <div class="position-fixed top-0 end-0 my-3 container-fluid">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" aria-label="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="containter-fluid text-center mx-auto text-white">
+    <div class="row">
+      <section class="col align-self-center">
+        &copy; 2022-2026
+      </section>
+    
+      <section class="col footer-center align-self-center">
+        <a href="https://mir-hossein.github.io/" title="Home">
+          <img src="https://mir-hossein.github.io/icons/home.png" alt="Home"/>
+        </a>
+        
+        <a href="https://github.com/mir-hossein" title="Github">
+          <img src="https://mir-hossein.github.io/icons/github.png" alt="Github"/>
+        </a>
+        
+        <a href="https://mir-hossein.github.io/about" title="About me">
+          <img src="https://mir-hossein.github.io/icons/person.png" alt="About Me"/>
+        </a>
+        
+        <a href="#" title="Up">
+          <img src="https://mir-hossein.github.io/icons/upward-arrow.png"/>
+        </a>
+      </section>
+    
+      <section class="col align-self-center">
+        Powered by <a href="https://gohugo.io/">Hugo</a> & My <img src="https://mir-hossein.github.io/icons/heart.png" class="powered-by heartbeat" alt="Heart"><br>    
+        Theme by <a href="https://mir-hossein.github.io/theme/" class="text-danger">MHR</a><br>
+        Icons by <a href="https://icons8.com" class="text-success">icons8.com</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>

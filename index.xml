@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mirhossein Rahmani &#39;s Personal Blog</title>
+    <link>https://mir-hossein.github.io/</link>
+    <description>Recent content on Mirhossein Rahmani &#39;s Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 22 Oct 2026 13:59:00 +0330</lastBuildDate>
+    <atom:link href="https://mir-hossein.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using PHP termination process to bypass __wakeup</title>
+      <link>https://mir-hossein.github.io/posts/en/php-termination-process-trick/</link>
+      <pubDate>Thu, 22 Oct 2026 13:59:00 +0330</pubDate>
+      <guid>https://mir-hossein.github.io/posts/en/php-termination-process-trick/</guid>
+      <description>A (new?) method to bypass __wakeup by exploiting PHP termination process.</description>
+    </item>
+    <item>
+      <title>Re-introducing several PHP tricks and a new gadget chain for Guzzle ...</title>
+      <link>https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/</link>
+      <pubDate>Thu, 22 Oct 2026 13:58:00 +0330</pubDate>
+      <guid>https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/</guid>
+      <description>I will (re?)-introduce a few useful PHP tricks and also a new RCE POP chain for Guzzle!</description>
+    </item>
+  </channel>
+</rss>
