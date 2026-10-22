@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Theme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="title" content="Theme" />
+  <meta name="description" content="Theme ..." />
+  <meta name="keywords" content="theme" />
+  
+  <link rel="canonical" href="https://mir-hossein.github.io/theme/" />
+
+  <meta property="og:type" content="article" />  
+  <meta property="og:url" content="https://mir-hossein.github.io/theme/" />
+  <meta property="og:title" content="Theme" />
+  <meta property="og:description" content="Theme ..." />
+  
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mir-hossein.github.io/theme/" />
+  <meta name="twitter:title" content="Theme" />
+  <meta name="twitter:description" content="Theme ..." />
+  
+  
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/styles.css">
+  
+  <script src="https://mir-hossein.github.io/js/bootstrap.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/jquery-4.0.0.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/script.js"></script>
+</head>
+
+<body>  
+  <header class="text-center"><h1 class="mx-auto text-white w-100 py-5 fw-bold">In the Name of GOD, the Most Gracious, the Most Merciful</h1></header>
+  
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav px-5">
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/" title="Home">Home <img src="https://mir-hossein.github.io/icons/home.png" alt="Home!"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/research/" title="Research">Research <img src="https://mir-hossein.github.io/icons/notes.png" alt="Research"/></a>
+      </li>
+      
+      <li class="nav-item" id="li-searchbox">
+        <a href="#" title="Search">Search <img src="https://mir-hossein.github.io/icons/search.png" alt="Search"/></a>
+      </li>
+      
+      <li class="nav-item no-hover" id="li-searchbox-extended">
+        <div class="container-fluid input-group">
+          <input type="text" class="form-control" id="searchbox"  aria-describedby="searchbox2" placeholder="Search by Google!" oninput="searchIt();">
+          
+          <span class="input-group-text">
+            <img src="https://mir-hossein.github.io/icons/search.png" alt="Search" id="by-google" class="search-by" onclick="googleSearch();" />
+          </span>
+        </div>
+      </li>
+        
+      <li class="nav-item no-hover ms-lg-auto rounded rounded-3" onchange="setMode();">
+        <div class="btn-group bg-gradient" role="group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-dark" autocomplete="off"  />
+          <label class="btn btn-outline-primary" for="btnradio-dark"><img src="https://mir-hossein.github.io/icons/moon.svg" alt="Moon" class="theme-mode-image" /></label>  
+          
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-light" autocomplete="off" checked />
+          <label class="btn btn-outline-primary" for="btnradio-light"><img src="https://mir-hossein.github.io/icons/sun.svg" alt="Sun" class="theme-mode-image" /></label>
+        </div>
+      </li>
+            
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/index.xml" title="RSS">RSS <img src="https://mir-hossein.github.io/icons/rss.png" alt="RSS"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/about/" title="About me">About me <img src="https://mir-hossein.github.io/icons/person.png" alt="Person"/></a>
+      </li>
+    </ul>
+  </nav>
+  
+  <br/>
+  
+  <aside class="left-side-content">&nbsp;</aside>
+  
+  <main class="container-fluid main-content" >
+
+    <article class="fa post-content border-0">
+
+<div class="text-secondary p-4 text-start" dir="ltr">
+<h3 class="fw-bold" id="about-this-theme">About this theme:</h3>
+<hr>
+<p>I&rsquo;m <span class="text-danger h3 fw-bold">NOT</span> a front-end developer.</p>
+<p>For this <a href="https://gohugo.io/" class="fw-bold">Hugo</a> theme, I used:
+<br/></p>
+<p><span class="text-success h3 ps-4">✓</span> HTML</p>
+<p><span class="text-success h3 ps-4">✓</span> CSS (+<a href="https://getbootstrap.com/">Bootstrap</a>)</p>
+<p><span class="text-success h3 ps-4">✓</span> JavaScript (+<a href="https://jquery.com/">jQuery</a> library)</p>
+<p><span class="text-success h3 ps-4">+</span> Icons by <a href="https://icons8.com">icons8.com</a> and <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</p>
+<p>&ldquo;<span class="text-success fw-bold">MHR</span>&rdquo; is the abbreviation of my full name.</p>
+</div>
+
+ 
+    </article>
+  
+  </main>
+  
+  <aside class="right-side-content">&nbsp;</aside>
+  
+  <div class="modal fade" id="full-size-modal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen bg-dark bg-opacity-50">
+      <div class="modal-content bg-dark bg-opacity-75 overflow-auto">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white">&nbsp;</h5>
+        </div>
+        
+        <div class="modal-body mx-auto">
+          <img id="full-size-img"  src="https://mir-hossein.github.io/icons/home.png" />
+        </div>
+        
+        <div class="position-fixed top-0 end-0 my-3 container-fluid">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" aria-label="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="containter-fluid text-center mx-auto text-white">
+    <div class="row">
+      <section class="col align-self-center">
+        &copy; 2022-2026
+      </section>
+    
+      <section class="col footer-center align-self-center">
+        <a href="https://mir-hossein.github.io/" title="Home">
+          <img src="https://mir-hossein.github.io/icons/home.png" alt="Home"/>
+        </a>
+        
+        <a href="https://github.com/mir-hossein" title="Github">
+          <img src="https://mir-hossein.github.io/icons/github.png" alt="Github"/>
+        </a>
+        
+        <a href="https://mir-hossein.github.io/about" title="About me">
+          <img src="https://mir-hossein.github.io/icons/person.png" alt="About Me"/>
+        </a>
+        
+        <a href="#" title="Up">
+          <img src="https://mir-hossein.github.io/icons/upward-arrow.png"/>
+        </a>
+      </section>
+    
+      <section class="col align-self-center">
+        Powered by <a href="https://gohugo.io/">Hugo</a> & My <img src="https://mir-hossein.github.io/icons/heart.png" class="powered-by heartbeat" alt="Heart"><br>    
+        Theme by <a href="https://mir-hossein.github.io/theme/" class="text-danger">MHR</a><br>
+        Icons by <a href="https://icons8.com" class="text-success">icons8.com</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>

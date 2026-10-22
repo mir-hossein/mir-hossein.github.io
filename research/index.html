@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My research projects ...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="title" content="My research projects ..." />
+  <meta name="description" content="My research ..." />
+  <meta name="keywords" content="Research" />
+  
+  <link rel="canonical" href="https://mir-hossein.github.io/research/" />
+
+  <meta property="og:type" content="article" />  
+  <meta property="og:url" content="https://mir-hossein.github.io/research/" />
+  <meta property="og:title" content="My research projects ..." />
+  <meta property="og:description" content="My research ..." />
+  
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mir-hossein.github.io/research/" />
+  <meta name="twitter:title" content="My research projects ..." />
+  <meta name="twitter:description" content="My research ..." />
+  
+  
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/styles.css">
+  
+  <script src="https://mir-hossein.github.io/js/bootstrap.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/jquery-4.0.0.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/script.js"></script>
+</head>
+
+<body>  
+  <header class="text-center"><h1 class="mx-auto text-white w-100 py-5 fw-bold">In the Name of GOD, the Most Gracious, the Most Merciful</h1></header>
+  
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav px-5">
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/" title="Home">Home <img src="https://mir-hossein.github.io/icons/home.png" alt="Home!"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/research/" title="Research">Research <img src="https://mir-hossein.github.io/icons/notes.png" alt="Research"/></a>
+      </li>
+      
+      <li class="nav-item" id="li-searchbox">
+        <a href="#" title="Search">Search <img src="https://mir-hossein.github.io/icons/search.png" alt="Search"/></a>
+      </li>
+      
+      <li class="nav-item no-hover" id="li-searchbox-extended">
+        <div class="container-fluid input-group">
+          <input type="text" class="form-control" id="searchbox"  aria-describedby="searchbox2" placeholder="Search by Google!" oninput="searchIt();">
+          
+          <span class="input-group-text">
+            <img src="https://mir-hossein.github.io/icons/search.png" alt="Search" id="by-google" class="search-by" onclick="googleSearch();" />
+          </span>
+        </div>
+      </li>
+        
+      <li class="nav-item no-hover ms-lg-auto rounded rounded-3" onchange="setMode();">
+        <div class="btn-group bg-gradient" role="group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-dark" autocomplete="off"  />
+          <label class="btn btn-outline-primary" for="btnradio-dark"><img src="https://mir-hossein.github.io/icons/moon.svg" alt="Moon" class="theme-mode-image" /></label>  
+          
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-light" autocomplete="off" checked />
+          <label class="btn btn-outline-primary" for="btnradio-light"><img src="https://mir-hossein.github.io/icons/sun.svg" alt="Sun" class="theme-mode-image" /></label>
+        </div>
+      </li>
+            
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/index.xml" title="RSS">RSS <img src="https://mir-hossein.github.io/icons/rss.png" alt="RSS"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/about/" title="About me">About me <img src="https://mir-hossein.github.io/icons/person.png" alt="Person"/></a>
+      </li>
+    </ul>
+  </nav>
+  
+  <br/>
+  
+  <aside class="left-side-content">&nbsp;</aside>
+  
+  <main class="container-fluid main-content" >
+
+    <article class="fa post-content border-0">
+
+<script>
+  $("main").addClass("dark-mode border-1");
+</script>
+<div dir="ltr">
+<h5 id="some-of-my-published-research-is-available-on-this-page-i-will-try-to-share-more-research-results-over-time">Some of my <span class="text-decoration-underline">published</span> research is available on this page. I will try to share more research results over time.</h5>
+</div>
+<div dir="ltr">
+<h3 class="text-success mt-5" id="my-published-articles">My published articles:</h3>
+<hr>
+<p><span id="PHP-Deserialization"></span><span class="text-light text-bg-success px-2">⮞ Research #1</span><span class="text-light text-bg-danger px-2">PHP-Deserialization</span></p>
+<ul>
+<li>The era of deserialization vulnerabilities in PHP is nearly at an end. We had a golden age with Phar deserialization (2018-2021). So I decided to publish part of my research related to this topic. That research included three categories: PHP tricks, POP chains, and 0-day vulnerabilities that used POP chains to achieve Remote Code Execution.
+<ul>
+<li><span class="fw-bold text-success">Part 1</span>: <a href="../posts/en/php-tricks-guzzle-pop-chain/">Re-introducing several PHP tricks and a new gadget chain for Guzzle &hellip;</a> (PHP tricks + POP chain)</li>
+<li><span class="fw-bold text-success">Part 2</span>: <a href="../posts/en/php-termination-process-trick/">Using PHP termination process to bypass __wakeup</a> (PHP tricks + POP chain) <span class="text-bg-warning bg-opacity-50 px-2 rounded-3">New: 2025</span></li>
+<li><span class="fw-bold text-success">Part 3</span>: It will probably be released next month.</li>
+<li><span class="fw-bold text-success">Part 4</span>: It will probably be released next month.</li>
+<li><span class="fw-bold text-success">Part 5</span>: It will be published in the future.</li>
+<li><span class="fw-bold text-success">Part 6</span>: It will be published in the future.</li>
+<li><span class="fw-bold text-success">Part 7</span>: It will be published in the future.</li>
+<li>Other sections of this research will also be published gradually.</li>
+</ul>
+</li>
+</ul>
+<p><span id="NO-ID"></span><span class="text-light text-bg-success px-2">⮞ Research #2</span><span class="text-light text-bg-danger px-2">TODO. (Will be updated) </span></p>
+<p>To see all published blog posts, <a href="../">Please click here.</a></p>
+</div>
+<div dir="ltr">
+<h3 class="text-success mt-5" id="my-published-pop-chains">My published POP chains:</h3>
+<hr>
+<ul>
+<li><a href="https://packagist.org/packages/guzzlehttp/psr7">Guzzle/Psr7</a>
+<ul>
+<li>It&rsquo;s the <strong>5&rsquo;th most popular package</strong> according to <a href="https://packagist.org/explore/popular">packagist.org</a> statistics. (Total installs.)</li>
+<li>Over 1B installs.</li>
+<li>Dependents:
+<ul>
+<li><a href="https://packagist.org/packages/guzzlehttp/psr7/dependents?order_by=downloads&amp;requires=require">more &hellip;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://packagist.org/packages/guzzlehttp/guzzle">Guzzle/Guzzle</a>
+<ul>
+<li>It&rsquo;s the <strong>8&rsquo;th most popular package</strong> according to <a href="https://packagist.org/explore/popular">packagist.org</a> statistics. (Total installs.)</li>
+<li>It&rsquo;s the most popular HTTP Client for PHP.</li>
+<li>Over 1B installs.</li>
+<li>Dependents:
+<ul>
+<li><a href="https://packagist.org/packages/guzzlehttp/guzzle/dependents?order_by=downloads&amp;requires=require">Drupal and more &hellip;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://packagist.org/packages/monolog/monolog">Monolog/Monolog</a>
+<ul>
+<li>It&rsquo;s the <strong>13&rsquo;th most popular package</strong> according to <a href="https://packagist.org/explore/popular">packagist.org</a> statistics. (Total installs.)</li>
+<li>It&rsquo;s the most popular logging library for PHP.</li>
+<li>Over 1B installs.</li>
+<li>Dependents:
+<ul>
+<li><a href="https://packagist.org/packages/monolog/monolog/dependents?order_by=downloads&amp;requires=require">Laravel and more &hellip;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://wordpress.org/plugins/wordpress-seo/">Yoast-SEO</a>
+<ul>
+<li>It&rsquo;s the second most popular plugin for Wordpress.</li>
+</ul>
+</li>
+</ul>
+<table class="table table-dark table-hover align-middle table-bordered border-secondary">
+  <thead class="d-none">
+    <tr class="d-none">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="text-center table-group-divider">
+    <tr class="d-none">
+      <td class="d-none">
+<p><strong>Test for align</strong>
+</td>
+</tr>
+<tr>
+<td colspan="6" class="p-2 align-middle table-success"></p>
+<p><strong>&quot;<a href="https://packagist.org/packages/monolog/monolog">Monolog</a>&quot; is the most popular logging library for PHP (Over 1B installs).</strong> <a href="https://packagist.org/packages/monolog/monolog/dependents?order_by=downloads&amp;requires=require">Dependents: Laravel and more &hellip;</a>
+</td>
+</tr>
+<tr class="align-middle text-center">
+<td class="text-info fw-bold">#</td>
+<td class="text-info fw-bold">Chain</td>
+<td class="text-info fw-bold">Type</td>
+<td class="text-info fw-bold">Coverage</td>
+<td class="text-info fw-bold">Description / Importance</td>
+<td class="text-info fw-bold">Write-up</td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="">Monolog/RCE7</a></td>
+<td>RCE</td>
+<td class="text-danger">1.10.0<span class="text-light"> .. </span>1.*.*<span class="text-light">,</span> 2.x</td>
+<td>The smallest POP chain for Monolog 1.10+, 2.x.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="">Monolog/RCE8</a></td>
+<td>RCE</td>
+<td class="text-danger">3.x</td>
+<td>The first POP chain for Monolog 3.x.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="">Monolog/RCE9</a></td>
+<td>RCE</td>
+<td class="text-danger">3.x</td>
+<td>The smallest POP chain for Monolog 3.x.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="">Monolog/RCE?</a></td>
+<td>RCE</td>
+<td class="text-danger">3.11+</td>
+<td>The smallest POP chain for Monolog 3.11+.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="">Monolog/RCE?</a></td>
+<td>RCE</td>
+<td class="text-danger">3.x</td>
+<td>Monolog/RCE9 + PHP-IAA-RDV trick.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="">Monolog/FW1</a></td>
+<td>FW</td>
+<td class="text-danger">3.x</td>
+<td>The first file-write POP chain for Monolog 3.x.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td colspan="6" class="p-2 align-middle table-success"></p>
+<p><strong>&quot;<a href="https://packagist.org/packages/guzzlehttp/guzzle">Guzzle</a>&quot; is the most popular HTTP Client for PHP (Over 1B installs).</strong> <a href="https://packagist.org/packages/guzzlehttp/guzzle/dependents?order_by=downloads&amp;requires=require">Dependents: Drupal and more &hellip;</a>
+</td>
+</tr>
+<tr class="align-middle text-center">
+<td class="text-info fw-bold">#</td>
+<td class="text-info fw-bold">Chain</td>
+<td class="text-info fw-bold">Type</td>
+<td class="text-info fw-bold">Coverage</td>
+<td class="text-info fw-bold">Description / Importance</td>
+<td class="text-info fw-bold">Write-up</td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="">Guzzle/RCE2</a></td>
+<td>RCE</td>
+<td class="text-danger">6.x<span class="text-light">,</span> 7.x</td>
+<td>The first direct RCE POP chain that covers Guzzle 7.x.</td>
+<td><a href="../posts/en/php-tricks-guzzle-pop-chain/">Link</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="">Guzzle/RCE3</a></td>
+<td>RCE</td>
+<td class="text-danger">6.x<span class="text-light">,</span> 7.x</td>
+<td>The first(?) real-world example of exploiting PHP termination process time window to bypass __wakeup in a popular library.</td>
+<td><a href="../posts/en/php-termination-process-trick/">Link</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="">Guzzle/RCE4</a></td>
+<td>RCE</td>
+<td class="text-danger">6.x<span class="text-light">,</span> 7.x</td>
+<td>RCE, Vector: __toString.</td>
+<td><a href="../posts/en/php-tricks-guzzle-pop-chain/">Link</a></td>
+</tr>
+<tr>
+<td colspan="6" class="p-2 align-middle table-success"></p>
+<p><strong>&quot;<a href="https://wordpress.org/plugins/wordpress-seo/">Yoast-SEO</a>&quot; is the second most popular plugin for Wordpress.</strong>
+</td>
+</tr>
+<tr class="align-middle text-center">
+<td class="text-info fw-bold">#</td>
+<td class="text-info fw-bold">Chain</td>
+<td class="text-info fw-bold">Type</td>
+<td class="text-info fw-bold">Coverage</td>
+<td class="text-info fw-bold">Description / Importance</td>
+<td class="text-info fw-bold">Write-up</td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="">WordPress/Yoast-SEO/RCE1</a></td>
+<td>RCE</td>
+<td class="text-danger">Guzzle 6.x<span class="text-light">,</span> 7.x</td>
+<td>Yoast-SEO is the 2&rsquo;nd most popular plugin for Wordpress. Similar to Guzzle/RCE2.</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="">WordPress/Yoast-SEO/RCE2</a></td>
+<td>RCE</td>
+<td class="text-danger">Guzzle 6.x<span class="text-light">,</span> 7.x</td>
+<td>Similar to Guzzle/RCE4. Vector: __toString.</td>
+<td>&mdash;</td>
+</tr></p>
+  </tbody>
+</table>
+<ul>
+<li>More POP chains will be published.</li>
+</ul>
+</div>
+<div dir="ltr">
+<h3 class="text-success mt-5" id="my-published-cves">My published CVE(s):</h3>
+<hr>
+<table class="table table-dark table-striped table-hover align-middle table-bordered">
+  <thead class="align-middle text-center">
+    <tr>
+      <th class="text-info">CVE-ID</th>
+      <th class="text-info">CVSS</th>
+      <th class="text-info">Description</th>
+      <th class="text-info">Write-up</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>* This table will be updated.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<ul>
+<li>TODO: This page will be updated.</li>
+</ul>
+</div>
+
+ 
+    </article>
+  
+  </main>
+  
+  <aside class="right-side-content">&nbsp;</aside>
+  
+  <div class="modal fade" id="full-size-modal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen bg-dark bg-opacity-50">
+      <div class="modal-content bg-dark bg-opacity-75 overflow-auto">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white">&nbsp;</h5>
+        </div>
+        
+        <div class="modal-body mx-auto">
+          <img id="full-size-img"  src="https://mir-hossein.github.io/icons/home.png" />
+        </div>
+        
+        <div class="position-fixed top-0 end-0 my-3 container-fluid">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" aria-label="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="containter-fluid text-center mx-auto text-white">
+    <div class="row">
+      <section class="col align-self-center">
+        &copy; 2022-2026
+      </section>
+    
+      <section class="col footer-center align-self-center">
+        <a href="https://mir-hossein.github.io/" title="Home">
+          <img src="https://mir-hossein.github.io/icons/home.png" alt="Home"/>
+        </a>
+        
+        <a href="https://github.com/mir-hossein" title="Github">
+          <img src="https://mir-hossein.github.io/icons/github.png" alt="Github"/>
+        </a>
+        
+        <a href="https://mir-hossein.github.io/about" title="About me">
+          <img src="https://mir-hossein.github.io/icons/person.png" alt="About Me"/>
+        </a>
+        
+        <a href="#" title="Up">
+          <img src="https://mir-hossein.github.io/icons/upward-arrow.png"/>
+        </a>
+      </section>
+    
+      <section class="col align-self-center">
+        Powered by <a href="https://gohugo.io/">Hugo</a> & My <img src="https://mir-hossein.github.io/icons/heart.png" class="powered-by heartbeat" alt="Heart"><br>    
+        Theme by <a href="https://mir-hossein.github.io/theme/" class="text-danger">MHR</a><br>
+        Icons by <a href="https://icons8.com" class="text-success">icons8.com</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>
