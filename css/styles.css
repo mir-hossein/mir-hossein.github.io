@@ -1,0 +1,508 @@
+/*
+ *
+ * TODO: Refactor required.
+ * 
+ */
+
+body {
+  background-color: #3f3f3f;
+  margin: 0;
+  font-size: larger;
+}
+
+body > header > h1 {
+  text-shadow: 1px 1px 1px grey;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 2em !important;
+}
+
+/*   Navigation bar */
+
+body > nav {
+  
+}
+
+body > nav > ul {
+  background-color: #313131;  
+  border-color: grey;
+  border-width: 1px;
+  border-style: solid none solid none;
+  color: white;
+  margin: 0px;
+  overflow: hidden;
+  width: 100%;
+}
+
+body > nav > ul > li {
+  display: block;
+  float: left;
+  padding: 15px;
+  height: 60px;
+}
+
+body > nav > ul > li:hover {
+  background-color: #202020;
+  transition-duration: 0.6s;
+}
+
+body > nav > ul > li * {
+  font-size: 18px !important;
+}
+
+body > nav > ul > li a, body > nav > ul > li a:visited, body > nav > ul > li a:active {
+  text-decoration: none;
+  color: white;
+}
+
+body > nav > ul > li img {
+  vertical-align: middle;
+  width: 35px;
+  margin-top: -4px;
+}
+
+body > nav > ul > li > div > span > div .search-by {
+  display: none;
+}
+
+body > nav > ul > li .search-by {
+  vertical-align: middle;
+  width: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+body > nav > ul > li .btn-group {
+  margin-top: -6px;
+}
+
+body > nav > ul > li .theme-mode-image {
+  margin-top: -4px;
+  width: 20px;
+  color: white !important;
+}
+
+body > nav > ul > li .form-control {
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+  height: 35px;
+  vertical-align: middle;
+  margin-top: -3px;
+  z-index: 0;
+}
+
+body > nav > ul > li .input-group-text {
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+  height: 35px;
+  vertical-align: middle;
+  margin-top: -3px;
+  z-index: 1;
+}
+
+.no-hover:hover {
+  background-color: #313131;
+}
+
+/* Responsive body */
+
+@media screen and (max-width: 992px) {
+  body > nav > ul > li {
+    text-align: center;
+  }
+  
+  .right-side-content, .left-side-content {
+    width: 3% !important;
+  }
+  
+  .main-content {
+    width: 94% !important;
+  }
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.main-content {
+  background-color: #f8f8f8;
+  border: 0px solid grey;
+  border-radius: 11px;
+  color: #404040;
+  float: left; 
+  margin-bottom: 45px;
+  margin-top: 30px;
+  padding: 15px;
+  text-align: justify;
+  width: 66%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content a {
+  text-decoration: none;
+}
+
+.left-side-content, .right-side-content {
+  float: left;
+  padding: 0;
+  width: 17%;
+  position: relative;
+}
+
+.fa {
+  direction: rtl;
+  font-family: "Vazirmatn", "BLotus", "B Lotus", "Tahoma", "Arial", "Times New Roman", sans-serif;
+  line-height: 1.8;
+}
+
+.en {
+  direction: ltr;
+  font-family: "Vazirmatn", "BLotus", "B Lotus", "Tahoma", "Arial", "Times New Roman", sans-serif;
+  line-height: 1.8;
+}
+
+/* Highlight */
+
+.highlight {
+  direction: ltr;
+  line-height: 1.1;
+  font: "sans-serif", "Tahoma", "Arial", "Times New Roman";
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.highlight div {
+  padding-top: 15px;
+}
+
+.highlight div, .highlight pre {
+  overflow-x: auto;
+}
+
+.highlight > div > table > tbody > tr > td:nth-child(2) > pre  {
+  border-left: 1px solid grey;
+}
+
+.pre-highlight {
+  border-bottom: 3px double grey;
+  overflow-x: auto;
+  direction: ltr;
+}
+
+/* Footer */
+
+body > footer {
+  background-color: #313131;
+  border-top: 1px solid grey;
+  color: snow;
+  float: left;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  font-size: smaller !important;
+}
+
+body > footer * {
+  text-decoration: none;
+}
+
+body > footer a {
+  color: #0288d1;
+  font-weight: bold;
+}
+
+body > footer > div > .footer-center {
+  border-color: grey;
+  border-style: none solid none solid;
+  border-width: 1px;
+  color: #404040;
+  float: left;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  text-align: center;
+  width: 40%;
+}
+
+.powered-by {
+  height: 30px;
+  vertical-align: middle;
+  margin-top: -5px;
+}
+
+/* Heartbeat */
+
+.heartbeat {
+  animation: heartbeat 1.5s step-start 0s infinite; 
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+    
+  12% {
+    transform: scale(1.2);
+  }
+  
+  24% {
+    transform: scale(1);
+  }
+   
+  36% {
+    transform: scale(1.2);
+  }
+  
+  48% {
+    transform: scale(1);
+  }
+  
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Status image */
+
+.status-img {
+  vertical-align: middle;
+  height: 30px;
+  margin-top: -5px;
+}
+
+/* Card */
+
+.post-date::after, .post-cat::after, .post-readingtime::after {
+  content: "   ";
+  white-space: pre;
+}
+
+main > article > footer > span {
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 4px;
+  font-size: smaller;
+}
+
+main > article > footer > .tags::before {
+  content: "# ";
+}
+
+.post-title > h4 > a {
+  text-decoration: none; 
+  color: #1976d2;  
+}
+
+.post-title > h4 > a:hover {
+  color: #5dade2;
+}
+
+.post-title > h4 > a::visited {
+  color: #a569bd;
+}
+
+.post-title > h4 {
+  margin: 5px;
+}
+
+.post-details {
+  
+}
+
+.post-summary {
+  border-bottom: 1px dotted;
+  border-top: 1px dotted;
+  margin-bottom: 7px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: 7px;
+  padding: 7px;
+}
+
+main > article {
+  border-style: solid !important;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 5px;
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+.en-posts {
+  direction: ltr;
+  font-family: "Vazirmatn", "BLotus", "B Lotus", "Tahoma", "Arial", "Times New Roman", sans-serif;
+  line-height: 1.8;
+}
+
+.separator-solid {
+  border-bottom: 1px solid darkgrey;
+  margin-bottom: 10px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 10px;
+  width: auto;
+}
+
+article > footer > span  {
+  padding-bottom: 0px;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src:
+    url('fonts/Vazirmatn-Light.woff2') format('woff2'),
+    url('fonts/Vazirmatn-Light.ttf') format('truetype');
+}
+
+.post-status-published::after {
+  content: "Published.";
+  white-space: pre;
+}
+
+.post-status-published-fa::after {
+  content: "منتشر شده است.";
+  white-space: pre;
+}
+
+.post-status-unpublished, .post-status-unpublished-fa {
+  color: #e53935;
+  animation: blinker 1s step-start 0s infinite; 
+}
+
+.post-status-unpublished::after {
+  content: "(It was postponed, but will be published in the future.)";
+  font-weight: bold;
+  white-space: pre;
+}
+
+.post-status-unpublished-fa::after {
+  content: "(به تعویق افتاده است، اما در آینده منتشر خواهد شد.)";
+  font-weight: bold;
+  white-space: pre;
+}
+
+.blink {
+  animation: blinker 1s step-start 0s infinite; 
+}
+
+@keyframes blinker {   
+  50% {
+    opacity: 0;
+  }
+}
+
+.small-icons {
+  width: 32px;
+  height: 32px;
+}
+
+/*
+ * callout from bootstrap doc
+ * I copied this section from https://getbootstrap.com/docs/5.3/customize/components/
+ * and improved it.
+ *
+ * "callout" is ~ "alert"
+ * <callout>
+ */
+
+.bd-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: var(--bd-callout-color, inherit);
+  background-color: var(--bd-callout-bg);
+}
+
+.bd-callout-ltr {
+  border-left: 0.35rem solid var(--bd-callout-border)
+}
+
+.bd-callout-rtl {
+  border-right: 0.35rem solid var(--bd-callout-border)
+}
+
+.bd-callout h4 {
+  margin-bottom: 0.25rem;
+}
+
+.bd-callout>:last-child {
+  margin-bottom: 0;
+}
+
+.bd-callout+.bd-callout {
+  margin-top: -.25rem;
+}
+
+.bd-callout .highlight {
+  background-color: rgba(0,0,0,0.05)
+}
+
+.bd-callout-info {
+  --bd-callout-color: var(--bs-info-text-emphasis);
+  --bd-callout-bg: var(--bs-info-bg-subtle);
+  --bd-callout-border: var(--bs-info);
+}
+
+.bd-callout-warning {
+  --bd-callout-color: var(--bs-warning-text-emphasis);
+  --bd-callout-bg: var(--bs-warning-bg-subtle);
+  --bd-callout-border: var(--bs-warning);
+}
+
+.bd-callout-danger {
+  --bd-callout-color: var(--bs-danger-text-emphasis);
+  --bd-callout-bg: var(--bs-danger-bg-subtle);
+  --bd-callout-border: var(--bs-danger);
+}
+
+.bd-callout-success {
+  --bd-callout-color: var(--bs-success-text-emphasis);
+  --bd-callout-bg: var(--bs-success-bg-subtle);
+  --bd-callout-border: var(--bs-success);
+}
+
+.bd-callout-primary {
+  --bd-callout-color: var(--bs-primary-text-emphasis);
+  --bd-callout-bg: var(--bs-primary-bg-subtle);
+  --bd-callout-border: var(--bs-primary);
+}
+
+.bd-callout-secondary {
+  --bd-callout-color: var(--bs-secondary-text-emphasis);
+  --bd-callout-bg: var(--bs-secondary-bg-subtle);
+  --bd-callout-border: var(--bs-secondary);
+}
+
+/*
+ * Dark Mode
+ */
+
+.dark-mode {
+  background-color: #313131;
+  color: white;
+  border: 1px solid grey;
+}
+
+/*
+ * Set border color for tags
+ */
+
+#published-posts ~ article > footer > span.tags
+{
+  border-color: rgba(var(--bs-success-rgb),var(--bs-border-opacity)) !important;
+}
+
+#draft-posts ~ article > footer > span.tags
+{
+  border-color: rgba(var(--bs-danger-rgb),var(--bs-border-opacity)) !important;
+}
